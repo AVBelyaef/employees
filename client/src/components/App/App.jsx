@@ -1,8 +1,9 @@
 import React from 'react';
+import EmployesList from '../EmployeesList/EmployesList';
 
 const App = () => (
   <div>
-    Hi!!!
+    <EmployesList />
   </div>
 );
 

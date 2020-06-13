@@ -28,12 +28,13 @@ module.exports = (env = {}) => {
   return {
     context: path.resolve(__dirname, 'src'),
     mode: isProd ? 'production' : isDev && 'development',
-    entry: './index.js',
+    entry: './index.jsx',
     output: {
       filename: fileName('js'),
       path: path.resolve(__dirname, 'dist'),
     },
     resolve: {
+      extensions: ['*', '.js', '.jsx'],
       alias: {
         '@': path.resolve(__dirname, 'src'),
       },
@@ -63,7 +64,7 @@ module.exports = (env = {}) => {
     module: {
       rules: [
         {
-          test: /\.js$/,
+          test: /\.(js|jsx)$/,
           exclude: /node_modues/,
           use: jsLoaders(),
         },
