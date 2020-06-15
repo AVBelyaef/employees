@@ -1,8 +1,15 @@
-// import { put, call, takeEvery } from 'redux-saga/effects';
+import {
+  EMPLOYEES_FAILURE, EMPLOYEES_REQUESTED, EMPLOYEES_SUCCESS,
+} from '../types';
 
-// eslint-disable-next-line require-yield
-function* watchFetches() {
-  yield console.log('watch');
-}
+export const employeesRequsted = () => ({ type: EMPLOYEES_REQUESTED });
 
-export default watchFetches;
+export const employeesSuccess = (employees) => ({
+  type: EMPLOYEES_SUCCESS,
+  payload: employees,
+});
+
+export const employeesFailure = (error) => ({
+  type: EMPLOYEES_FAILURE,
+  error,
+});
