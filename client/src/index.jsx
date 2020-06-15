@@ -7,8 +7,8 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 
 import rootReducer from './redux/reducers/rootReducer';
-import watchFetches from './redux/actions';
-import App from './components/App';
+import watchFetches from './redux/saga/saga';
+import App from './components/App/App';
 import './scss/index.scss';
 
 const sagaMiddleware = createSagaMiddleware();
