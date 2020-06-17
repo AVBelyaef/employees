@@ -1,17 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useHistory, Link } from 'react-router-dom';
 
 const EmployeesListItem = ({ employees }) => {
   const {
     name, phone, birthday, id,
   } = employees;
-  // eslint-disable-next-line no-shadow
-  const addPage = (id) => { };
+  const history = useHistory();
+  const editPage = (idx) => {
+    history.push(`/employees/${idx}/edit`);
+  };
   return (
-    <span onClick={() => addPage(id)}>
-      { name }
-      { phone }
-      { birthday }
+    <span>
+      {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+      <Link to="#" onClick={() => editPage(id)} role="button" tabIndex={0} aria-pressed="false">{name}</Link>
+      <div>{ phone }</div>
+      <div>{ birthday }</div>
     </span>
   );
 };

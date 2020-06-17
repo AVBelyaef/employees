@@ -25,12 +25,12 @@
       "birthday": "29.11.1990"
     },
     {
-      "id": 4,
       "name": "Олимпиада Макарова",
       "isArchive": true,
       "role": "waiter",
       "phone": "+7 (945) 447-2286",
-      "birthday": "06.01.1987"
+      "birthday": "06.01.1987",
+      "id": 4
     },
     {
       "id": 5,

@@ -32,18 +32,21 @@ module.exports = (env = {}) => {
     output: {
       filename: fileName('js'),
       path: path.resolve(__dirname, 'dist'),
+      publicPath: '/',
     },
     resolve: {
       extensions: ['*', '.js', '.jsx'],
       alias: {
-        '@': path.resolve(__dirname, 'src'),
+        '@': path.resolve(__dirname, 'src/components'),
       },
     },
     devServer: {
       open: true,
       hot: true,
       port: 3000,
+      historyApiFallback: true,
     },
+    devtool: 'source-map',
     plugins: [
       new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
