@@ -1,12 +1,14 @@
 import {
   EMPLOYEES_FAILURE, EMPLOYEES_REQUESTED, EMPLOYEES_SUCCESS, EMPLOYEE_REQUESTED,
-  EMPLOYEE_BY_ID_SUCCESS,
+  EMPLOYEE_BY_ID_SUCCESS, VISIBILITY_FILTER, VISIBILITY_FILTER_ROLE, VISIBILITY_FILTER_ARCHIVE,
 } from '../types';
 
 const initialState = {
   employees: [],
   employeeById: null,
   isLoading: false,
+  filterRole: '',
+  filterIsArchive: '',
   isError: '',
 };
 
@@ -46,6 +48,18 @@ const employees = (state = initialState, action) => {
         ...state,
         employeeById: action.payload,
         isLoading: false,
+      };
+    }
+    case VISIBILITY_FILTER_ROLE: {
+      return {
+        ...state,
+        filterRole: action.payload,
+      };
+    }
+    case VISIBILITY_FILTER_ARCHIVE: {
+      return {
+        ...state,
+        filterIsArchive: action.payload,
       };
     }
     default:
