@@ -1,14 +1,18 @@
 import {
   EMPLOYEES_FAILURE, EMPLOYEES_REQUESTED, EMPLOYEES_SUCCESS, EMPLOYEE_REQUESTED,
-  EMPLOYEE_BY_ID_SUCCESS, VISIBILITY_FILTER, VISIBILITY_FILTER_ROLE, VISIBILITY_FILTER_ARCHIVE,
+  EMPLOYEE_BY_ID_SUCCESS, VISIBILITY_FILTER_ROLE, VISIBILITY_FILTER_ARCHIVE,
+  SORT_NAME, SORT_BIRTHDAY,
 } from '../types';
+
 
 const initialState = {
   employees: [],
   employeeById: null,
   isLoading: false,
-  filterRole: '',
-  filterIsArchive: '',
+  filterRole: 'all',
+  filterIsArchive: false,
+  sortName: false,
+  sortBirthday: false,
   isError: '',
 };
 
@@ -60,6 +64,18 @@ const employees = (state = initialState, action) => {
       return {
         ...state,
         filterIsArchive: action.payload,
+      };
+    }
+    case SORT_NAME: {
+      return {
+        ...state,
+        sortName: !state.sortName,
+      };
+    }
+    case SORT_BIRTHDAY: {
+      return {
+        ...state,
+        sortBirthday: !state.sortBirthday,
       };
     }
     default:

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import InputMask from 'react-input-mask';
 import { fetchUpdateEmployee, fetchEmployeeById } from '../../redux/actions';
+import './EditEmployee.scss';
 
 const EditEmployee = () => {
   const { id } = useParams();
@@ -20,7 +21,7 @@ const EditEmployee = () => {
     e.preventDefault();
     dispatch(fetchUpdateEmployee(values));
     setValues({
-      name: '', phone: '', birthday: '', role: 'Повар', isArchive: false,
+      name: '', phone: '', birthday: '', role: 'cook', isArchive: false,
     });
     history.push('/employees');
   };
@@ -36,9 +37,9 @@ const EditEmployee = () => {
   };
   return (
     <div className="d-flex justify-content-center mt-3">
-      <form onSubmit={submitForm}>
+      <form onSubmit={submitForm} className="edit-employee-form">
         <div className="form-group">
-          <label htmlFor="name">
+          <label htmlFor="name" className="edit-employee-input">
             Имя:
             <input
               id="name"
@@ -53,7 +54,7 @@ const EditEmployee = () => {
         </div>
         <div className="form-group">
           {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-          <label htmlFor="phone">
+          <label htmlFor="phone" className="edit-employee-input">
             Номер телефона:
             <InputMask
               mask="+7 (999) 999-9999"
@@ -69,7 +70,7 @@ const EditEmployee = () => {
         </div>
         <div className="form-group">
           {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-          <label htmlFor="date">
+          <label htmlFor="date" className="edit-employee-input">
             День рождения:
             <InputMask
               mask="99.99.9999"

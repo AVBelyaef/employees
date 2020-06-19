@@ -16,6 +16,7 @@ const FilterRole = () => {
         // value={role}
         onChange={handleSelectChange}
       >
+        <option value="all">all</option>
         <option value="driver">driver</option>
         <option value="waiter">waiter</option>
         <option value="cook">cook</option>

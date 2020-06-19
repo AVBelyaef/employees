@@ -2,7 +2,7 @@ import {
   EMPLOYEES_FAILURE, EMPLOYEES_REQUESTED, EMPLOYEES_SUCCESS,
   FETCHED_ADD_EMPLOYEE, FETCHED_UPDATE_EMPLOYEE, EMPLOYEE_REQUESTED,
   FETCHED_EMPLOYEE_BY_ID, EMPLOYEE_BY_ID_SUCCESS, VISIBILITY_FILTER_ROLE,
-  VISIBILITY_FILTER_ARCHIVE,
+  VISIBILITY_FILTER_ARCHIVE, SORT_NAME, SORT_BIRTHDAY,
 } from '../types';
 
 export const employeesRequsted = () => ({ type: EMPLOYEES_REQUESTED });
@@ -47,4 +47,12 @@ export const filterRole = (value) => ({
 export const filterIsArchive = (value) => ({
   type: VISIBILITY_FILTER_ARCHIVE,
   payload: value,
+});
+
+export const sortName = () => ({
+  type: SORT_NAME,
+});
+
+export const sortBirthday = () => ({
+  type: SORT_BIRTHDAY,
 });

@@ -1,5 +1,5 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { filterIsArchive } from '../../redux/actions';
 
 const FilterIsArchive = () => {
@@ -8,9 +8,14 @@ const FilterIsArchive = () => {
     const { checked } = e.target;
     dispatch(filterIsArchive(checked));
   };
+  const check = useSelector((s) => s.employees.filterIsArchive);
+  const [value, setValue] = useState(check);
+  useEffect(() => {
+    setValue(check);
+  }, [check]);
   return (
     <div
-      className="col-sm-4 col-lg-2 d-flex justify-content-center align-items-center"
+      className="col-sm-3 col-lg-2 d-flex justify-content-center align-items-center"
     >
       <div className="form-group">
         <div className="form-check">
@@ -19,6 +24,7 @@ const FilterIsArchive = () => {
             type="checkbox"
             name="isArchive"
             id="archive"
+            checked={value}
             onChange={handleSelectChange}
             className="form-check-input"
           />

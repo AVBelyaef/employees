@@ -3,10 +3,11 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import InputMask from 'react-input-mask';
 import { fetchAddEmployee } from '../../redux/actions';
+import './NewEmployee.scss';
 
 const NewEmployee = () => {
   const [values, setValues] = useState({
-    name: '', phone: '', birthday: '', role: 'Повар', isArchive: false,
+    name: '', phone: '', birthday: '', role: 'cook', isArchive: false,
   });
   const dispatch = useDispatch();
   const history = useHistory();
@@ -14,7 +15,7 @@ const NewEmployee = () => {
     e.preventDefault();
     dispatch(fetchAddEmployee(values));
     setValues({
-      name: '', phone: '', birthday: '', role: 'Повар', isArchive: false,
+      name: '', phone: '', birthday: '', role: 'cook', isArchive: false,
     });
     history.push('/employees');
   };
@@ -31,9 +32,9 @@ const NewEmployee = () => {
   };
   return (
     <div className="d-flex justify-content-center mt-3">
-      <form onSubmit={submitForm} className="">
+      <form onSubmit={submitForm} className="new-employee-form">
         <div className="form-group">
-          <label htmlFor="name">
+          <label htmlFor="name" className="new-employee-input">
             Имя:
             <input
               id="name"
@@ -48,7 +49,7 @@ const NewEmployee = () => {
         </div>
         <div className="form-group">
           {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-          <label htmlFor="phone">
+          <label htmlFor="phone" className="new-employee-input">
             Номер телефона:
             <InputMask
               mask="+7 (999) 999-9999"
@@ -64,7 +65,7 @@ const NewEmployee = () => {
         </div>
         <div className="form-group">
           {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-          <label htmlFor="date">
+          <label htmlFor="date" className="new-employee-input">
             День рождения:
             <InputMask
               mask="99.99.9999"
