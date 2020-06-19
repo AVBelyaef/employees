@@ -13,6 +13,7 @@ const EditEmployee = () => {
     dispatch(fetchEmployeeById(id));
   }, [dispatch, id]);
   const employee = useSelector((s) => s.employees.employeeById);
+  const isLoading = useSelector((s) => s.employees.isLoading);
   const [values, setValues] = useState({ ...employee });
   useEffect(() => {
     setValues({ ...employee });
@@ -36,85 +37,95 @@ const EditEmployee = () => {
     }
   };
   return (
-    <div className="d-flex justify-content-center mt-3">
-      <form onSubmit={submitForm} className="edit-employee-form">
-        <div className="form-group">
-          <label htmlFor="name" className="edit-employee-input">
-            Имя:
-            <input
-              id="name"
-              name="name"
-              type="text"
-              className="form-control"
-              value={values.name}
-              onChange={handleInputChange}
-              required
-            />
-          </label>
+    isLoading
+      ? (
+        <div className="d-flex justify-content-center">
+          <div className="spinner-border" role="status">
+            <span className="sr-only">Loading...</span>
+          </div>
         </div>
-        <div className="form-group">
-          {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-          <label htmlFor="phone" className="edit-employee-input">
-            Номер телефона:
-            <InputMask
-              mask="+7 (999) 999-9999"
-              id="phone"
-              name="phone"
-              type="tel"
-              className="form-control"
-              value={values.phone}
-              onChange={handleInputChange}
-              required
-            />
-          </label>
+      )
+      : (
+        <div className="d-flex justify-content-center mt-3">
+          <form onSubmit={submitForm} className="edit-employee-form">
+            <div className="form-group">
+              <label htmlFor="name" className="edit-employee-input">
+                Имя:
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  className="form-control"
+                  value={values.name}
+                  onChange={handleInputChange}
+                  required
+                />
+              </label>
+            </div>
+            <div className="form-group">
+              {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+              <label htmlFor="phone" className="edit-employee-input">
+                Номер телефона:
+                <InputMask
+                  mask="+7 (999) 999-9999"
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  className="form-control"
+                  value={values.phone}
+                  onChange={handleInputChange}
+                  required
+                />
+              </label>
+            </div>
+            <div className="form-group">
+              {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+              <label htmlFor="date" className="edit-employee-input">
+                День рождения:
+                <InputMask
+                  mask="99.99.9999"
+                  className="form-control"
+                  id="date"
+                  name="birthday"
+                  value={values.birthday}
+                  onChange={handleInputChange}
+                />
+              </label>
+            </div>
+            <div className="form-group">
+              <label htmlFor="role">
+                <select
+                  id="role"
+                  name="role"
+                  className="form-control"
+                  value={values.role}
+                  onChange={handleInputChange}
+                  required
+                >
+                  <option value="cook">Повар</option>
+                  <option value="waiter">Официант</option>
+                  <option value="driver">Водитель</option>
+                </select>
+              </label>
+            </div>
+            <div className="form-group form-check">
+              <input
+                type="checkbox"
+                name="isArchive"
+                id="archive"
+                className="form-check-input"
+                checked={values.isArchive}
+                onChange={handleInputChange}
+              />
+              {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+              <label htmlFor="archive" className="form-check-label">
+                в архиве
+              </label>
+            </div>
+            <button type="submit" className="btn btn-primary">Обновить</button>
+          </form>
         </div>
-        <div className="form-group">
-          {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-          <label htmlFor="date" className="edit-employee-input">
-            День рождения:
-            <InputMask
-              mask="99.99.9999"
-              className="form-control"
-              id="date"
-              name="birthday"
-              value={values.birthday}
-              onChange={handleInputChange}
-            />
-          </label>
-        </div>
-        <div className="form-group">
-          <label htmlFor="role">
-            <select
-              id="role"
-              name="role"
-              className="form-control"
-              value={values.role}
-              onChange={handleInputChange}
-              required
-            >
-              <option value="cook">Повар</option>
-              <option value="waiter">Официант</option>
-              <option value="driver">Водитель</option>
-            </select>
-          </label>
-        </div>
-        <div className="form-group form-check">
-          <input
-            type="checkbox"
-            name="isArchive"
-            id="archive"
-            className="form-check-input"
-            checked={values.isArchive}
-            onChange={handleInputChange}
-          />
-          {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-          <label htmlFor="archive" className="form-check-label">
-            в архиве
-          </label>
-        </div>
-        <button type="submit" className="btn btn-primary">Обновить</button>
-      </form>
-    </div>
+      )
   );
 };
 
