@@ -49,10 +49,10 @@ export const filterIsArchive = (value) => ({
   payload: value,
 });
 
-export const sortName = () => ({
+export const sortNameAC = () => ({
   type: SORT_NAME,
 });
 
-export const sortBirthday = () => ({
+export const sortBirthdayAC = () => ({
   type: SORT_BIRTHDAY,
 });
