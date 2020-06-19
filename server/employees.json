@@ -1,12 +1,12 @@
 {
   "users": [
     {
-      "id": 1,
       "name": "Илья Емельянов",
       "isArchive": false,
       "role": "driver",
       "phone": "+7 (883) 508-3269",
-      "birthday": "12.02.1982"
+      "birthday": "12.02.1982",
+      "id": 1
     },
     {
       "id": 2,
